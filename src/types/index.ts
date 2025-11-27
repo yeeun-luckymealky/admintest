@@ -102,3 +102,61 @@ export interface DashboardStats {
   pendingReports: number;
   todayReviews: number;
 }
+
+// 배너 타입
+export type BannerStatus = '노출중' | '대기' | '종료' | '비활성';
+
+export interface Banner {
+  id: string;
+  title: string;
+  imageUrl: string;
+  linkUrl?: string;
+  order: number;
+  startDate: string;
+  endDate: string;
+  status: BannerStatus;
+  createdAt: string;
+}
+
+// 쿠폰 타입
+export type CouponStatus = '사용가능' | '사용완료' | '만료' | '삭제';
+
+export interface Coupon {
+  id: string;
+  code: string;
+  name: string;
+  discount: number;
+  customerName: string;
+  customerPhone: string;
+  issuedAt: string;
+  expiresAt: string;
+  usedAt?: string;
+  status: CouponStatus;
+}
+
+// 푸시 알림 타입
+export type PushTargetType = '전체고객' | '특정고객' | '코호트' | '전체판매자' | '특정판매자';
+export type PushStatus = '발송완료' | '발송예정' | '발송실패' | '취소';
+
+export interface PushNotification {
+  id: string;
+  title: string;
+  message: string;
+  targetType: PushTargetType;
+  targetDetail?: string;
+  scheduledAt: string;
+  sentAt?: string;
+  targetCount: number;
+  successCount?: number;
+  status: PushStatus;
+  createdAt: string;
+}
+
+// 코호트 타입
+export interface Cohort {
+  id: string;
+  name: string;
+  description: string;
+  memberCount: number;
+  criteria: string;
+}

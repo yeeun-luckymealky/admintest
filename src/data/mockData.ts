@@ -1,4 +1,4 @@
-import type { Store, Order, Customer, Settlement, Review, Report, DashboardStats } from '@/types';
+import type { Store, Order, Customer, Settlement, Review, Report, DashboardStats, Banner, Coupon, PushNotification, Cohort } from '@/types';
 
 // 가게 Mock 데이터 (50개)
 export const mockStores: Store[] = [
@@ -266,3 +266,55 @@ export const settlementStatusCounts = {
   정산보류: 18,
   정산취소: 10,
 };
+
+// 배너 Mock 데이터
+export const mockBanners: Banner[] = [
+  { id: '1', title: '크리스마스 특별 할인', imageUrl: '/banners/christmas.jpg', linkUrl: '/event/christmas', order: 1, startDate: '2024-12-01', endDate: '2024-12-25', status: '노출중', createdAt: '2024-11-20' },
+  { id: '2', title: '신규 가입 이벤트', imageUrl: '/banners/welcome.jpg', linkUrl: '/event/welcome', order: 2, startDate: '2024-11-01', endDate: '2024-12-31', status: '노출중', createdAt: '2024-10-25' },
+  { id: '3', title: '연말 감사 세일', imageUrl: '/banners/yearend.jpg', linkUrl: '/event/yearend', order: 3, startDate: '2024-12-20', endDate: '2024-12-31', status: '대기', createdAt: '2024-11-25' },
+  { id: '4', title: '첫 주문 50% 할인', imageUrl: '/banners/first-order.jpg', linkUrl: '/event/first', order: 4, startDate: '2024-11-15', endDate: '2024-11-30', status: '종료', createdAt: '2024-11-10' },
+  { id: '5', title: '친구 초대 이벤트', imageUrl: '/banners/invite.jpg', linkUrl: '/event/invite', order: 5, startDate: '2024-10-01', endDate: '2024-10-31', status: '종료', createdAt: '2024-09-25' },
+  { id: '6', title: '겨울맞이 따뜻한 음식 기획전', imageUrl: '/banners/winter.jpg', linkUrl: '/event/winter', order: 6, startDate: '2024-12-01', endDate: '2025-02-28', status: '노출중', createdAt: '2024-11-28' },
+  { id: '7', title: '럭키밀 2주년 기념 이벤트', imageUrl: '/banners/anniversary.jpg', linkUrl: '/event/anniversary', order: 7, startDate: '2025-01-15', endDate: '2025-01-31', status: '대기', createdAt: '2024-11-20' },
+  { id: '8', title: '환경보호 캠페인', imageUrl: '/banners/eco.jpg', order: 8, startDate: '2024-11-01', endDate: '2024-11-30', status: '종료', createdAt: '2024-10-20' },
+];
+
+// 쿠폰 Mock 데이터
+export const mockCoupons: Coupon[] = [
+  { id: '1', code: 'WELCOME2024', name: '신규 가입 할인', discount: 3000, customerName: '홍길동', customerPhone: '010-1111-2222', issuedAt: '2024-11-27', expiresAt: '2024-12-31', status: '사용가능' },
+  { id: '2', code: 'FIRST5000', name: '첫 주문 특별 할인', discount: 5000, customerName: '김영수', customerPhone: '010-2222-3333', issuedAt: '2024-11-25', expiresAt: '2024-12-25', status: '사용가능' },
+  { id: '3', code: 'LUCKY1000', name: '럭키밀 감사 쿠폰', discount: 1000, customerName: '이민정', customerPhone: '010-3333-4444', issuedAt: '2024-11-20', expiresAt: '2024-12-20', usedAt: '2024-11-25', status: '사용완료' },
+  { id: '4', code: 'WINTER2000', name: '겨울 특별 쿠폰', discount: 2000, customerName: '박서준', customerPhone: '010-4444-5555', issuedAt: '2024-11-15', expiresAt: '2024-12-15', status: '사용가능' },
+  { id: '5', code: 'VIP10000', name: 'VIP 고객 감사 쿠폰', discount: 10000, customerName: '최유나', customerPhone: '010-5555-6666', issuedAt: '2024-11-10', expiresAt: '2024-12-10', status: '사용가능' },
+  { id: '6', code: 'SORRY3000', name: '서비스 불편 보상', discount: 3000, customerName: '정민호', customerPhone: '010-6666-7777', issuedAt: '2024-11-05', expiresAt: '2024-12-05', usedAt: '2024-11-20', status: '사용완료' },
+  { id: '7', code: 'RETURN2000', name: '재방문 감사 쿠폰', discount: 2000, customerName: '한소희', customerPhone: '010-7777-8888', issuedAt: '2024-10-30', expiresAt: '2024-11-30', status: '만료' },
+  { id: '8', code: 'EVENT5000', name: '이벤트 당첨 쿠폰', discount: 5000, customerName: '오세훈', customerPhone: '010-8888-9999', issuedAt: '2024-11-01', expiresAt: '2024-12-01', status: '삭제' },
+  { id: '9', code: 'BIRTH3000', name: '생일 축하 쿠폰', discount: 3000, customerName: '강민혁', customerPhone: '010-1234-1234', issuedAt: '2024-11-22', expiresAt: '2024-12-22', status: '사용가능' },
+  { id: '10', code: 'REVIEW1000', name: '리뷰 작성 감사 쿠폰', discount: 1000, customerName: '윤서연', customerPhone: '010-2345-2345', issuedAt: '2024-11-18', expiresAt: '2024-12-18', usedAt: '2024-11-26', status: '사용완료' },
+  { id: '11', code: 'LOYAL5000', name: '단골 고객 감사', discount: 5000, customerName: '이준호', customerPhone: '010-3456-3456', issuedAt: '2024-11-12', expiresAt: '2024-12-12', status: '사용가능' },
+  { id: '12', code: 'XMAS7000', name: '크리스마스 특별 쿠폰', discount: 7000, customerName: '김지수', customerPhone: '010-4567-4567', issuedAt: '2024-11-26', expiresAt: '2024-12-26', status: '사용가능' },
+];
+
+// 코호트 Mock 데이터
+export const mockCohorts: Cohort[] = [
+  { id: '1', name: 'VIP 고객', description: '월 5회 이상 주문 고객', memberCount: 1250, criteria: 'orderCount >= 5' },
+  { id: '2', name: '신규 가입자', description: '최근 30일 내 가입 고객', memberCount: 890, criteria: 'registeredAt >= 30days' },
+  { id: '3', name: '휴면 고객', description: '최근 60일간 주문 없는 고객', memberCount: 2340, criteria: 'lastOrderAt <= 60days' },
+  { id: '4', name: '서울 지역 고객', description: '서울 지역 거주 고객', memberCount: 5600, criteria: 'region == 서울' },
+  { id: '5', name: '고매너 고객', description: '매너지수 90점 이상', memberCount: 3200, criteria: 'mannerScore >= 90' },
+  { id: '6', name: '이벤트 참여자', description: '최근 이벤트 참여 고객', memberCount: 1800, criteria: 'eventParticipant == true' },
+];
+
+// 푸시 알림 Mock 데이터
+export const mockPushNotifications: PushNotification[] = [
+  { id: '1', title: '크리스마스 특별 할인 안내', message: '크리스마스를 맞아 전 메뉴 20% 할인! 지금 바로 확인하세요.', targetType: '전체고객', scheduledAt: '2024-12-01 10:00', sentAt: '2024-12-01 10:00', targetCount: 15000, successCount: 14850, status: '발송완료', createdAt: '2024-11-28' },
+  { id: '2', title: 'VIP 고객 전용 혜택', message: 'VIP 고객님께만 드리는 특별한 혜택! 10,000원 쿠폰이 도착했습니다.', targetType: '코호트', targetDetail: 'VIP 고객', scheduledAt: '2024-11-27 14:00', sentAt: '2024-11-27 14:00', targetCount: 1250, successCount: 1245, status: '발송완료', createdAt: '2024-11-26' },
+  { id: '3', title: '주문하신 음식이 준비되었습니다', message: '행복도시락에서 주문하신 음식이 준비 완료되었습니다. 픽업해주세요!', targetType: '특정고객', targetDetail: '010-1111-2222', scheduledAt: '2024-11-27 18:30', sentAt: '2024-11-27 18:30', targetCount: 1, successCount: 1, status: '발송완료', createdAt: '2024-11-27' },
+  { id: '4', title: '연말 감사 이벤트 사전 안내', message: '12월 20일부터 시작되는 연말 감사 이벤트! 미리 알려드립니다.', targetType: '전체고객', scheduledAt: '2024-12-15 09:00', targetCount: 15000, status: '발송예정', createdAt: '2024-11-25' },
+  { id: '5', title: '신규 입점 가게 안내', message: '고객님 지역에 새로운 가게가 입점했습니다. 지금 확인해보세요!', targetType: '코호트', targetDetail: '서울 지역 고객', scheduledAt: '2024-11-26 11:00', sentAt: '2024-11-26 11:00', targetCount: 5600, successCount: 5580, status: '발송완료', createdAt: '2024-11-25' },
+  { id: '6', title: '휴면 고객 복귀 이벤트', message: '오랜만이에요! 돌아오신 분들께 특별 할인 쿠폰을 드립니다.', targetType: '코호트', targetDetail: '휴면 고객', scheduledAt: '2024-11-28 10:00', targetCount: 2340, status: '발송예정', createdAt: '2024-11-27' },
+  { id: '7', title: '판매자 정산 안내', message: '11월 3주차 정산이 완료되었습니다. 정산 내역을 확인해주세요.', targetType: '전체판매자', scheduledAt: '2024-11-25 09:00', sentAt: '2024-11-25 09:00', targetCount: 923, successCount: 920, status: '발송완료', createdAt: '2024-11-24' },
+  { id: '8', title: '긴급: 시스템 점검 안내', message: '11월 30일 02:00-06:00 시스템 점검이 예정되어 있습니다.', targetType: '전체고객', scheduledAt: '2024-11-29 18:00', targetCount: 15000, status: '발송예정', createdAt: '2024-11-27' },
+  { id: '9', title: '리뷰 작성 요청', message: '최근 주문하신 음식은 어떠셨나요? 리뷰를 남겨주세요!', targetType: '특정고객', targetDetail: '010-2222-3333', scheduledAt: '2024-11-26 12:00', sentAt: '2024-11-26 12:00', targetCount: 1, successCount: 0, status: '발송실패', createdAt: '2024-11-26' },
+  { id: '10', title: '신규 가입 환영 메시지', message: '럭키밀에 오신 것을 환영합니다! 첫 주문 시 3,000원 할인 쿠폰을 드려요.', targetType: '코호트', targetDetail: '신규 가입자', scheduledAt: '2024-11-27 10:00', sentAt: '2024-11-27 10:00', targetCount: 890, successCount: 888, status: '발송완료', createdAt: '2024-11-26' },
+];

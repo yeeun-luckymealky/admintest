@@ -12,6 +12,9 @@ import {
   SettingOutlined,
   HomeOutlined,
   WarningOutlined,
+  PictureOutlined,
+  GiftOutlined,
+  NotificationOutlined,
 } from '@ant-design/icons';
 import { useRouter, usePathname } from 'next/navigation';
 import type { MenuProps } from 'antd';
@@ -62,6 +65,27 @@ const menuItems: MenuProps['items'] = [
     key: '/reports',
     icon: <WarningOutlined />,
     label: '신고/블랙리스트',
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: '/banners',
+    icon: <PictureOutlined />,
+    label: '배너 관리',
+  },
+  {
+    key: '/coupons',
+    icon: <GiftOutlined />,
+    label: '쿠폰 관리',
+  },
+  {
+    key: '/push',
+    icon: <NotificationOutlined />,
+    label: '푸시 알림',
+  },
+  {
+    type: 'divider',
   },
   {
     key: '/settings',

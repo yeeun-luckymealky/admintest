@@ -43,6 +43,23 @@ const statusColorMap: Record<string, string> = {
   '처리중': 'blue',
   '블랙': 'red',
   '해제': 'green',
+
+  // 배너 상태
+  '노출중': 'green',
+  '대기': 'blue',
+  '종료': 'default',
+  '비활성': 'red',
+
+  // 쿠폰 상태
+  '사용가능': 'green',
+  '사용완료': 'blue',
+  '만료': 'orange',
+
+  // 푸시 상태
+  '발송완료': 'green',
+  '발송예정': 'blue',
+  '발송실패': 'red',
+  '취소': 'default',
 };
 
 export default function StatusBadge({ status }: StatusBadgeProps) {
