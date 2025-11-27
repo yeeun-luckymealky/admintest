@@ -2,12 +2,9 @@
 
 import React from 'react';
 import { Tag } from 'antd';
-import type { StoreStatus, OrderStatus, SettlementStatus, CustomerStatus, ReviewStatus, ReportStatus } from '@/types';
-
-type StatusType = StoreStatus | OrderStatus | SettlementStatus | CustomerStatus | ReviewStatus | ReportStatus;
 
 interface StatusBadgeProps {
-  status: StatusType;
+  status: string;
 }
 
 const statusColorMap: Record<string, string> = {
@@ -33,6 +30,7 @@ const statusColorMap: Record<string, string> = {
   '정산취소': 'red',
 
   // 고객 상태
+  '활성': 'green',
   '정상': 'green',
   '블랙리스트': 'red',
 
